@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import TestingRedux from "./component/TestingRedux";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import TestingById from "./component/TestingById";
+import HomeComp from "./component/HomeComp";
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+    <Provider store={store}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomeComp />} />
+            <Route path="/TestingRedux" element={<TestingRedux /> } />
+            <Route path="/TestingRedux/:id" element={<TestingById />} />
+          </Routes>
+        </Router>
+    </Provider> 
+    </div>  
+    
+    // <myContext.Provider value={{text,setText}} >
+    //   <SecondComponent />
+    // </myContext.Provider>
+ 
+//using use COntext 
+
+//  <ContextProvider>
+//  <SecondComponent />
+// </ContextProvider> 
+
+
+
   );
 }
 
